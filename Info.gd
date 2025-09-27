@@ -6,6 +6,7 @@ var playerPos
 
 var hop = false
 var wallJump = false
+var key = false
 
 var posessing = false
 var posessed

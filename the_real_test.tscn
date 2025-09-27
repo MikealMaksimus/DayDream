@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://c2hqt37cc2dhq"]
+[gd_scene load_steps=9 format=3 uid="uid://c2hqt37cc2dhq"]
 
 [ext_resource type="PackedScene" uid="uid://djsrk8tongu5y" path="res://stone_map.tscn" id="1_lqera"]
 [ext_resource type="PackedScene" uid="uid://cw3d3ae4gtj0j" path="res://player.tscn" id="2_aaam8"]
@@ -6,6 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://lh1f3upn0so3" path="res://spikes.tscn" id="4_ialeo"]
 [ext_resource type="PackedScene" uid="uid://bf6svam4es1k7" path="res://camera_anchor.tscn" id="5_r5qvl"]
 [ext_resource type="PackedScene" uid="uid://cxnwwxym0d75l" path="res://camera_2d.tscn" id="6_26033"]
+[ext_resource type="PackedScene" uid="uid://cgqlyok3f1h1k" path="res://key.tscn" id="7_46qq0"]
+[ext_resource type="PackedScene" uid="uid://b5euy8fwj1h5x" path="res://door.tscn" id="8_vbkt6"]
 
 [node name="TheRealTest" type="Node2D"]
 
@@ -31,6 +33,13 @@ position = Vector2(-159, 90)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
+[node name="Key" parent="." instance=ExtResource("7_46qq0")]
+position = Vector2(71, 90)
+
+[node name="Door" parent="." instance=ExtResource("8_vbkt6")]
+position = Vector2(18, 104)
+
 [connection signal="drop" from="Player" to="Dude" method="_on_player_drop"]
 [connection signal="reset" from="Player" to="Dude" method="_on_player_reset"]
+[connection signal="reset" from="Player" to="Key" method="_on_player_reset"]
 [connection signal="save" from="Player" to="Dude" method="_on_player_save"]
