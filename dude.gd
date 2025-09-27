@@ -24,6 +24,8 @@ func _physics_process(delta: float) -> void:
 	else:
 		velocity.y = 0
 	
+
+	
 	#if Input.is_action_just_pressed("Posess") and onArea:
 	#	sacrifice()
 	
@@ -33,6 +35,7 @@ func _physics_process(delta: float) -> void:
 		$CollisionShape2D.disabled = true
 		hide()
 		global_position = Info.playerPos
+		print(name)
 	else:
 		$CollisionShape2D.disabled = false
 
@@ -84,7 +87,6 @@ func _on_player_drop() -> void:
 	posessed = false
 	disabled = false
 	show()
-	print("a")
 
 
 func _on_player_save() -> void:
