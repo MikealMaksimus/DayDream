@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://bek3l5oogvfmg"]
+[gd_scene load_steps=5 format=3 uid="uid://bek3l5oogvfmg"]
 
 [ext_resource type="Script" path="res://dude.gd" id="1_7vldv"]
 [ext_resource type="Texture2D" uid="uid://dhwbw1txy1whn" path="res://Sprites2/Innocent.png" id="2_4wvyb"]
@@ -6,7 +6,12 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv8pr"]
 size = Vector2(16, 12)
 
-[node name="Dude" type="Node2D"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0i8vh"]
+size = Vector2(7, 12)
+
+[node name="Dude" type="CharacterBody2D"]
+collision_layer = 4
+collision_mask = 4
 script = ExtResource("1_7vldv")
 
 [node name="Dude" type="Sprite2D" parent="."]
@@ -16,6 +21,10 @@ texture = ExtResource("2_4wvyb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_sv8pr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-0.5, 0.5)
+shape = SubResource("RectangleShape2D_0i8vh")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
