@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var onArea = false
-var gravity = 1400
+var gravity = 300
 
 var blood = preload("res://blood_splash.tscn")
 var blow = preload("res://DudeExplos.mp3")
@@ -20,7 +20,7 @@ func _ready() -> void:
 	velocity = Vector2(0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if dead:
 		collision_layer |= 1 << 0
 		$Dude.frame = 1
@@ -38,7 +38,7 @@ func _process(delta: float) -> void:
 	
 	if disabled:
 		$CollisionShape2D.disabled = true
-		hide()
+		#hide()
 		global_position = Info.playerPos
 	else:
 		$CollisionShape2D.disabled = false
@@ -69,6 +69,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		$AudioStreamPlayer.play()
 
 func reset():
+	$Dude.frame = 0
 	collision_layer &= ~(1 << 0)
 	global_position = resetPos
 	show()
