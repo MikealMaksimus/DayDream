@@ -23,6 +23,12 @@ signal drop
 signal save
 
 func _physics_process(delta: float) -> void:
+	
+	if Info.posessed == preload("res://BigDude.tscn"):
+		$Center/Sprite2D.texture = load("res://Sprites2/PlayerBig.png")
+	else:
+		$Center/Sprite2D.texture = load("res://Sprites2/dude.png")
+	
 	Info.playerPos = global_position
 	
 	if velocity.y > 10:
@@ -58,7 +64,10 @@ func jumping():
 		if Input.is_action_just_pressed("jump") and is_on_floor() or Input.is_action_just_pressed("jump") and not $Coyote.is_stopped() or Input.is_action_pressed("jump") and is_on_floor() and not $JBuffer.is_stopped():
 			#$noSoundCut.play(jumpSound, 1, 0)
 			if Info.hop:
-				velocity.y = -jump
+				if Info.posessed == preload("res://BigDude.tscn"):
+					velocity.y = -jump / 1.2
+				else:
+					velocity.y = -jump
 			else:
 				velocity.y = -jump / 2
 
@@ -97,6 +106,8 @@ func walking():
 func animation():
 	if not Info.hop:
 		$CollisionShape2D/AnimationPlayer.play("Small")
+	elif Info.posessed == preload("res://BigDude.tscn"):
+		$CollisionShape2D/AnimationPlayer.play("Big")
 	else:
 		$CollisionShape2D/AnimationPlayer.play("Human")
 	

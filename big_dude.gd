@@ -46,7 +46,7 @@ func _physics_process(delta: float) -> void:
 func sacrifice():
 	Info.posessing = true
 	Info.hop = true
-	Info.posessed = load("res://dude.tscn")
+	Info.posessed = load("res://BigDude.tscn")
 	disabled = true
 	posessed = true
 
