@@ -3,6 +3,10 @@ extends CharacterBody2D
 var onArea = false
 var gravity = 1400
 
+var blood = preload("res://blood_splash.tscn")
+var blow = preload("res://DudeExplos.mp3")
+var audio = preload("res://audio_player.tscn")
+
 func _ready() -> void:
 	velocity = Vector2(0, 0)
 
@@ -25,9 +29,24 @@ func sacrifice():
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		onArea = true
+	if not body.cool:
+		sacrifice()
+#	if body.is_in_group("Player"):
+#		onArea = true
 
 func _on_area_2d_body_exited(body: Node2D) -> void:
-	if body.is_in_group("Player"):
-		onArea = false
+	pass
+#	if body.is_in_group("Player"):
+#		onArea = false
+
+
+func _on_hit_box_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Deadly"):
+		var p = blood.instantiate()
+		p.position = global_position
+		get_parent().add_child(p)
+		
+		var a = audio.instantiate()
+		a.sound = blow
+		get_parent().add_child(a)
+		queue_free()

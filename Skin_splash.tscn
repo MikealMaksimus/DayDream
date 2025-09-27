@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://dx0j5ob43xp0d"]
+
+[ext_resource type="Script" path="res://blood_splash.gd" id="1_x4e0c"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fx6sv"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 90.0
+initial_velocity_min = 20.0
+initial_velocity_max = 86.02
+angular_velocity_min = -77.42
+angular_velocity_max = 77.42
+gravity = Vector3(0, 80, 0)
+color = Color(0.964706, 0.709804, 0.6, 1)
+
+[node name="SkinSplash" type="GPUParticles2D"]
+emitting = false
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_fx6sv")
+lifetime = 3.0
+one_shot = true
+explosiveness = 1.0
+script = ExtResource("1_x4e0c")
