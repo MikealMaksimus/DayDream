@@ -23,6 +23,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	if dead:
 		collision_layer |= 1 << 0
+		$Dude.frame = 1
 	
 	
 	if not is_on_floor():
@@ -65,6 +66,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 func _on_hit_box_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Deadly") and not disabled:
 		dead = true
+		$AudioStreamPlayer.play()
 
 func reset():
 	collision_layer &= ~(1 << 0)
@@ -85,6 +87,7 @@ func _on_player_drop() -> void:
 	posessed = false
 	disabled = false
 	show()
+	$Dude.frame = 0
 
 
 func _on_player_save() -> void:
