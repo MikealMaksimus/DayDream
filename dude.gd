@@ -84,6 +84,7 @@ func _on_player_drop() -> void:
 	posessed = false
 	disabled = false
 	show()
+	print("a")
 
 
 func _on_player_save() -> void:
