@@ -35,8 +35,9 @@ func _physics_process(delta: float) -> void:
 	
 	if disabled:
 		$CollisionShape2D.disabled = true
-		hide()
+		#hide()
 		global_position = Info.playerPos
+		global_position.y -= 1
 	else:
 		$CollisionShape2D.disabled = false
 
