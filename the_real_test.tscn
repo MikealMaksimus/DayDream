@@ -2,10 +2,10 @@
 
 [ext_resource type="PackedScene" uid="uid://djsrk8tongu5y" path="res://stone_map.tscn" id="1_lqera"]
 [ext_resource type="PackedScene" uid="uid://cw3d3ae4gtj0j" path="res://player.tscn" id="2_aaam8"]
-[ext_resource type="PackedScene" uid="uid://bek3l5oogvfmg" path="res://dude.tscn" id="3_71no4"]
 [ext_resource type="PackedScene" uid="uid://lh1f3upn0so3" path="res://spikes.tscn" id="4_ialeo"]
 [ext_resource type="PackedScene" uid="uid://bf6svam4es1k7" path="res://camera_anchor.tscn" id="5_r5qvl"]
 [ext_resource type="PackedScene" uid="uid://cxnwwxym0d75l" path="res://camera_2d.tscn" id="6_26033"]
+[ext_resource type="PackedScene" uid="uid://b0v06luymgval" path="res://BigDude.tscn" id="6_eieig"]
 
 [node name="TheRealTest" type="Node2D"]
 
@@ -14,9 +14,6 @@ layer_0/tile_data = PackedInt32Array(983040, 65536, 0, 1048576, 65536, 1, 983041
 
 [node name="Player" parent="." instance=ExtResource("2_aaam8")]
 position = Vector2(33, 0)
-
-[node name="Dude" parent="." instance=ExtResource("3_71no4")]
-position = Vector2(145, 73)
 
 [node name="Spikes" parent="." instance=ExtResource("4_ialeo")]
 layer_0/tile_data = PackedInt32Array(917529, 0, 0, 917528, 0, 0, 917527, 0, 0, 917526, 0, 0)
@@ -31,6 +28,9 @@ position = Vector2(-159, 90)
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
 
-[connection signal="drop" from="Player" to="Dude" method="_on_player_drop"]
-[connection signal="reset" from="Player" to="Dude" method="_on_player_reset"]
-[connection signal="save" from="Player" to="Dude" method="_on_player_save"]
+[node name="BigDude" parent="." instance=ExtResource("6_eieig")]
+position = Vector2(89, -7)
+
+[connection signal="drop" from="Player" to="BigDude" method="_on_player_drop"]
+[connection signal="reset" from="Player" to="BigDude" method="_on_player_reset"]
+[connection signal="save" from="Player" to="BigDude" method="_on_player_save"]
