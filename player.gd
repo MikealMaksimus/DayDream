@@ -9,6 +9,8 @@ var acc = 40
 var dec = 60
 var jump = 305
 
+var cool = false
+
 var gravity = 1400
 
 var direction = 0
@@ -23,8 +25,7 @@ func _physics_process(delta: float) -> void:
 		velocity.y +=  gravity * delta
 	
 	walking()
-	if Info.hop:
-		jumping()
+	jumping()
 	
 	if Info.posessing and Input.is_action_just_pressed("Posess") and canDrop:
 		var drop = load("res://dude.tscn").instantiate()
@@ -35,6 +36,8 @@ func _physics_process(delta: float) -> void:
 		Info.posessing = false
 		Info.posessed = null
 		velocity.y = -jump
+		$Cooldown.start()
+		cool = true
 	
 	if Info.posessing:
 		canDrop = true
@@ -46,8 +49,11 @@ func _physics_process(delta: float) -> void:
 func jumping():
 		if Input.is_action_just_pressed("jump") and is_on_floor() or Input.is_action_just_pressed("jump") and not $Coyote.is_stopped() or Input.is_action_pressed("jump") and is_on_floor() and not $JBuffer.is_stopped():
 			#$noSoundCut.play(jumpSound, 1, 0)
-			velocity.y = -jump
-		
+			if Info.hop:
+				velocity.y = -jump
+			else:
+				velocity.y = -jump / 2
+
 		elif Input.is_action_just_released("jump") and velocity.y < 0:
 			velocity.y = 0
 		
@@ -82,6 +88,11 @@ func walking():
 
 func animation():
 	if not Info.hop:
+		$CollisionShape2D/AnimationPlayer.play("Small")
+	else:
+		$CollisionShape2D/AnimationPlayer.play("Human")
+	
+	if not Info.hop:
 		$AnimationPlayer.play("Crawl")
 	elif not is_on_floor() and velocity.y <= 0:
 		$AnimationPlayer.play("Jump")
@@ -93,3 +104,7 @@ func animation():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Deadly"):
 		global_position = Info.chekPoint
+
+
+func _on_cooldown_timeout() -> void:
+	cool = false
