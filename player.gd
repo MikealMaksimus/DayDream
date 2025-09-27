@@ -104,6 +104,10 @@ func animation():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Deadly"):
 		global_position = Info.chekPoint
+		
+		Info.hop = Info.hopSave
+		Info.posessed = Info.posessedSave
+		Info.posessing = Info.posessingSave
 
 
 func _on_cooldown_timeout() -> void:

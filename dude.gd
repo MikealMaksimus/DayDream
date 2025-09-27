@@ -7,11 +7,16 @@ var blood = preload("res://blood_splash.tscn")
 var blow = preload("res://DudeExplos.mp3")
 var audio = preload("res://audio_player.tscn")
 
+@export var ID : int
+
 func _ready() -> void:
 	velocity = Vector2(0, 0)
+	Info.dudesSave.insert(ID, global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	Info.dudes.insert(ID, global_position)
+	
 	if not is_on_floor():
 		velocity.y +=  gravity * delta * 1.6
 	else:
@@ -29,8 +34,9 @@ func sacrifice():
 	queue_free()
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if not body.cool:
-		sacrifice()
+	if body.is_in_group("Player"):
+		if not body.cool:
+			sacrifice()
 #	if body.is_in_group("Player"):
 #		onArea = true
 
@@ -50,3 +56,6 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		a.sound = blow
 		get_parent().add_child(a)
 		queue_free()
+
+func reset():
+	global_position = Info.saveDudes[ID]
