@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://djhym21qlqfmk"]
+
+[ext_resource type="Script" path="res://dig_fixer.gd" id="1_dw8uq"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ecsri"]
+size = Vector2(2, 2)
+
+[node name="DigFixer" type="Area2D"]
+script = ExtResource("1_dw8uq")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ecsri")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -22,6 +22,8 @@ signal reset
 signal drop
 signal save
 
+var platform_velocity: Vector2 = Vector2.ZERO
+
 func _physics_process(delta: float) -> void:
 	
 	if Info.posessed == preload("res://BigDude.tscn"):
@@ -55,8 +57,7 @@ func _physics_process(delta: float) -> void:
 	
 	if Info.posessing:
 		canDrop = true
-	
-	
+
 	animation()
 	move_and_slide()
 

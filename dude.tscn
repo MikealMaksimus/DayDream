@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bek3l5oogvfmg"]
+[gd_scene load_steps=6 format=3 uid="uid://bek3l5oogvfmg"]
 
 [ext_resource type="Script" path="res://dude.gd" id="1_7vldv"]
 [ext_resource type="Texture2D" uid="uid://dhwbw1txy1whn" path="res://Sprites2/Innocent.png" id="2_4wvyb"]
+[ext_resource type="PackedScene" uid="uid://djhym21qlqfmk" path="res://dig_fixer.tscn" id="3_3vsdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv8pr"]
 size = Vector2(6, 5)
@@ -34,6 +35,8 @@ collision_mask = 2
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
 position = Vector2(-0.5, 0.5)
 shape = SubResource("RectangleShape2D_0i8vh")
+
+[node name="DigFixer" parent="." instance=ExtResource("3_3vsdl")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
