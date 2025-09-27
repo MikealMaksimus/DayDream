@@ -1,7 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://cw3d3ae4gtj0j"]
+[gd_scene load_steps=15 format=3 uid="uid://cw3d3ae4gtj0j"]
 
 [ext_resource type="Script" path="res://player.gd" id="1_0ga4o"]
-[ext_resource type="Texture2D" uid="uid://edufbxk6ct74" path="res://Sprites2/dude.png" id="2_mw2ji"]
+[ext_resource type="Texture2D" uid="uid://di8s6ev4p1yq5" path="res://Sprites2/PlayerBig.png" id="2_xy6pt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_snvf8"]
 size = Vector2(4, 3.48438)
@@ -159,8 +159,60 @@ tracks/3/keys = {
 "values": [Vector2(4, 3.48438)]
 }
 
+[sub_resource type="Animation" id="Animation_35nn2"]
+resource_name = "Big"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:shape:size")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 17)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0.5)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("../Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("../Area2D/CollisionShape2D:shape:size")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(8, 17)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_eoqhj"]
 _data = {
+"Big": SubResource("Animation_35nn2"),
 "Human": SubResource("Animation_cuswp"),
 "RESET": SubResource("Animation_0bf7w"),
 "Small": SubResource("Animation_y6hn6")
@@ -264,7 +316,7 @@ script = ExtResource("1_0ga4o")
 [node name="Center" type="Node2D" parent="."]
 
 [node name="Sprite2D" type="Sprite2D" parent="Center"]
-texture = ExtResource("2_mw2ji")
+texture = ExtResource("2_xy6pt")
 hframes = 6
 vframes = 6
 frame = 32
