@@ -7,34 +7,41 @@ var blood = preload("res://blood_splash.tscn")
 var blow = preload("res://DudeExplos.mp3")
 var audio = preload("res://audio_player.tscn")
 
-@export var ID : int
+var resetPos
+
+var posessed = false
+var disabled = false
+var disableOnReset = false
 
 func _ready() -> void:
+	resetPos = global_position
 	velocity = Vector2(0, 0)
-	Info.dudesSave.insert(ID, global_position)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	Info.dudes.insert(ID, global_position)
-	
 	if not is_on_floor():
 		velocity.y +=  gravity * delta * 1.6
 	else:
 		velocity.y = 0
 	
-	if Input.is_action_just_pressed("Posess") and onArea:
-		sacrifice()
+	#if Input.is_action_just_pressed("Posess") and onArea:
+	#	sacrifice()
 	
 	move_and_slide()
+	
+	if disabled:
+		hide()
+		global_position = Info.playerPos
 
 func sacrifice():
 	Info.posessing = true
 	Info.hop = true
 	Info.posessed = load("res://dude.tscn")
-	queue_free()
+	disabled = true
+	posessed = true
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("Player") and not disabled:
 		if not body.cool:
 			sacrifice()
 #	if body.is_in_group("Player"):
@@ -47,7 +54,7 @@ func _on_area_2d_body_exited(body: Node2D) -> void:
 
 
 func _on_hit_box_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Deadly"):
+	if body.is_in_group("Deadly") and not disabled:
 		var p = blood.instantiate()
 		p.position = global_position
 		get_parent().add_child(p)
@@ -55,7 +62,29 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		var a = audio.instantiate()
 		a.sound = blow
 		get_parent().add_child(a)
-		queue_free()
+		disabled = true
 
 func reset():
-	global_position = Info.saveDudes[ID]
+	global_position = resetPos
+	show()
+
+func _on_player_reset() -> void:
+	if not disableOnReset:
+		reset()
+		disabled = false
+	else:
+		disabled = true
+
+
+
+func _on_player_drop() -> void:
+	posessed = false
+	disabled = false
+	show()
+
+
+func _on_player_save() -> void:
+	if posessed:
+		disableOnReset = true
+	else:
+		disableOnReset = false

@@ -16,7 +16,7 @@ layer_0/tile_data = PackedInt32Array(983040, 65536, 0, 1048576, 65536, 1, 983041
 position = Vector2(33, 0)
 
 [node name="Dude" parent="." instance=ExtResource("3_71no4")]
-position = Vector2(145, 114)
+position = Vector2(145, 73)
 
 [node name="Spikes" parent="." instance=ExtResource("4_ialeo")]
 layer_0/tile_data = PackedInt32Array(917529, 0, 0, 917528, 0, 0, 917527, 0, 0, 917526, 0, 0)
@@ -30,3 +30,7 @@ position = Vector2(-159, 90)
 [node name="Camera2D" parent="." instance=ExtResource("6_26033")]
 position_smoothing_enabled = true
 position_smoothing_speed = 7.0
+
+[connection signal="drop" from="Player" to="Dude" method="_on_player_drop"]
+[connection signal="reset" from="Player" to="Dude" method="_on_player_reset"]
+[connection signal="save" from="Player" to="Dude" method="_on_player_save"]

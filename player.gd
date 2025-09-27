@@ -16,8 +16,14 @@ var gravity = 1400
 var direction = 0
 var was_on_floor
 
+var posessedReset
+
+signal reset
+signal drop
+signal save
 
 func _physics_process(delta: float) -> void:
+	Info.playerPos = global_position
 	
 	if velocity.y > 10:
 		velocity.y +=  gravity * delta * 1.6
@@ -28,9 +34,11 @@ func _physics_process(delta: float) -> void:
 	jumping()
 	
 	if Info.posessing and Input.is_action_just_pressed("Posess") and canDrop:
-		var drop = load("res://dude.tscn").instantiate()
-		drop.position = global_position
-		get_parent().add_child(drop)
+		#var drop = load("res://dude.tscn").instantiate()
+		#drop.position = global_position
+		#reset.connect(drop._on_player_reset)
+		#get_parent().add_child(drop)
+		emit_signal("drop")
 		canDrop = false
 		Info.hop = false
 		Info.posessing = false
@@ -104,7 +112,7 @@ func animation():
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Deadly"):
 		global_position = Info.chekPoint
-		
+		emit_signal("reset")
 		Info.hop = Info.hopSave
 		Info.posessed = Info.posessedSave
 		Info.posessing = Info.posessingSave
