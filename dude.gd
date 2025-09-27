@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var onArea = false
-var gravity = 1400
+var gravity = 300
 
 var blood = preload("res://blood_splash.tscn")
 var blow = preload("res://DudeExplos.mp3")
@@ -18,7 +18,7 @@ func _ready() -> void:
 	velocity = Vector2(0, 0)
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity.y +=  gravity * delta * 1.6
 	else:
