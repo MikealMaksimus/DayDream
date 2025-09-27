@@ -77,3 +77,7 @@ func animation():
 		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("Idle")
+
+func _on_area_2d_body_entered(body: Node2D) -> void:
+	if body.is_in_group("Deadly"):
+		global_position = Info.chekPoint
