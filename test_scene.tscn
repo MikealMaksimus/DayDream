@@ -1,10 +1,11 @@
-[gd_scene load_steps=6 format=3 uid="uid://1tv1v3qbs6y"]
+[gd_scene load_steps=7 format=3 uid="uid://1tv1v3qbs6y"]
 
 [ext_resource type="PackedScene" uid="uid://cw3d3ae4gtj0j" path="res://player.tscn" id="1_ksk7y"]
 [ext_resource type="PackedScene" uid="uid://bek3l5oogvfmg" path="res://dude.tscn" id="2_o1lbi"]
 [ext_resource type="PackedScene" uid="uid://cxcc06akvccxb" path="res://grass_map.tscn" id="3_dn604"]
 [ext_resource type="PackedScene" uid="uid://djsrk8tongu5y" path="res://stone_map.tscn" id="4_lrlc7"]
 [ext_resource type="PackedScene" uid="uid://bf6svam4es1k7" path="res://camera_anchor.tscn" id="5_dxouo"]
+[ext_resource type="PackedScene" uid="uid://cxnwwxym0d75l" path="res://camera_2d.tscn" id="6_ma47f"]
 
 [node name="TestScene" type="Node2D"]
 
@@ -25,3 +26,5 @@ position = Vector2(160, 97)
 
 [node name="CameraAnchor2" parent="." instance=ExtResource("5_dxouo")]
 position = Vector2(477, 97)
+
+[node name="Camera2D" parent="." instance=ExtResource("6_ma47f")]
