@@ -45,7 +45,7 @@ func sacrifice():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Player") and not disabled:
-		if not body.cool:
+		if not body.cool and not Info.posessing:
 			sacrifice()
 #	if body.is_in_group("Player"):
 #		onArea = true
