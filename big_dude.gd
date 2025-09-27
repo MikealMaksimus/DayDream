@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var onArea = false
-var gravity = 50
+var gravity = 150
 
 var blow = preload("res://DudeExplos.mp3")
 var audio = preload("res://audio_player.tscn")
