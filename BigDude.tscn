@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0v06luymgval"]
+[gd_scene load_steps=6 format=3 uid="uid://cyqr3lsfqbgbc"]
 
 [ext_resource type="Script" path="res://big_dude.gd" id="1_o40b0"]
 [ext_resource type="Texture2D" uid="uid://cs2dptfnrsdju" path="res://Sprites2/BigDude.png" id="2_vstnn"]
@@ -8,7 +8,7 @@
 size = Vector2(6, 5)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0i8vh"]
-size = Vector2(8, 17)
+size = Vector2(10, 17)
 
 [node name="BigDude" type="CharacterBody2D"]
 z_index = -1
