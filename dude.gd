@@ -13,6 +13,8 @@ var posessed = false
 var disabled = false
 var disableOnReset = false
 
+var dead = false
+
 func _ready() -> void:
 	resetPos = global_position
 	velocity = Vector2(0, 0)
@@ -35,7 +37,6 @@ func _physics_process(delta: float) -> void:
 		$CollisionShape2D.disabled = true
 		hide()
 		global_position = Info.playerPos
-		print(name)
 	else:
 		$CollisionShape2D.disabled = false
 
@@ -68,6 +69,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		var a = audio.instantiate()
 		a.sound = blow
 		get_parent().add_child(a)
+		dead = true
 		disabled = true
 
 func reset():
@@ -75,6 +77,7 @@ func reset():
 	show()
 
 func _on_player_reset() -> void:
+	dead = false
 	if not disableOnReset:
 		reset()
 		disabled = false
@@ -84,9 +87,10 @@ func _on_player_reset() -> void:
 
 
 func _on_player_drop() -> void:
-	posessed = false
-	disabled = false
-	show()
+	if not dead:
+		posessed = false
+		disabled = false
+		show()
 
 
 func _on_player_save() -> void:
