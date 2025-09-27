@@ -1,8 +1,7 @@
 extends CharacterBody2D
 
-var hop = false
 var double = false
-var wall = false
+
 
 
 var speed = 140
@@ -10,7 +9,7 @@ var acc = 40
 var dec = 60
 var jump = 305
 
-var gravity = 1500
+var gravity = 1400
 
 var direction = 0
 var was_on_floor
@@ -24,8 +23,12 @@ func _physics_process(delta: float) -> void:
 		velocity.y +=  gravity * delta
 	
 	walking()
-	if hop:
+	if Info.hop:
 		jumping()
+	
+	if Info.posessing and Input.is_action_just_pressed("Posess"):
+		velocity.y = -jump
+		Info.hop = false
 	
 	
 	animation()
@@ -69,7 +72,7 @@ func walking():
 		velocity.x =  move_toward(velocity.x, 0, dec)
 
 func animation():
-	if not hop:
+	if not Info.hop:
 		$AnimationPlayer.play("Crawl")
 	elif not is_on_floor() and velocity.y <= 0:
 		$AnimationPlayer.play("Jump")
@@ -80,5 +83,4 @@ func animation():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Deadly"):
-		print(body)
 		global_position = Info.chekPoint

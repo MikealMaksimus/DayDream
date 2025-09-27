@@ -27,3 +27,5 @@ position = Vector2(157, 90)
 position = Vector2(-159, 90)
 
 [node name="Camera2D" parent="." instance=ExtResource("6_26033")]
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
