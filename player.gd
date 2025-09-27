@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 var double = false
 
-
+var canDrop = false
 
 var speed = 140
 var acc = 40
@@ -26,9 +26,18 @@ func _physics_process(delta: float) -> void:
 	if Info.hop:
 		jumping()
 	
-	if Info.posessing and Input.is_action_just_pressed("Posess"):
-		velocity.y = -jump
+	if Info.posessing and Input.is_action_just_pressed("Posess") and canDrop:
+		var drop = load("res://dude.tscn").instantiate()
+		drop.position = global_position
+		get_parent().add_child(drop)
+		canDrop = false
 		Info.hop = false
+		Info.posessing = false
+		Info.posessed = null
+		velocity.y = -jump
+	
+	if Info.posessing:
+		canDrop = true
 	
 	
 	animation()
