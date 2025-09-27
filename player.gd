@@ -71,5 +71,9 @@ func walking():
 func animation():
 	if not hop:
 		$AnimationPlayer.play("Crawl")
+	elif not is_on_floor() and velocity.y <= 0:
+		$AnimationPlayer.play("Jump")
+	elif not direction == 0:
+		$AnimationPlayer.play("Walk")
 	else:
 		$AnimationPlayer.play("Idle")
