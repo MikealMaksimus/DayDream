@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 	if hop:
 		jumping()
 	
+	
+	animation()
 	move_and_slide()
 
 func jumping():
@@ -65,3 +67,9 @@ func walking():
 		$Center.scale.x = -1
 	else:
 		velocity.x =  move_toward(velocity.x, 0, dec)
+
+func animation():
+	if not hop:
+		$AnimationPlayer.play("Crawl")
+	else:
+		$AnimationPlayer.play("Idle")
