@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bek3l5oogvfmg"]
 
 [ext_resource type="Script" path="res://dude.gd" id="1_7vldv"]
-[ext_resource type="Texture2D" uid="uid://dhwbw1txy1whn" path="res://Innocent.png" id="2_4wvyb"]
+[ext_resource type="Texture2D" uid="uid://dhwbw1txy1whn" path="res://Sprites2/Innocent.png" id="2_4wvyb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv8pr"]
 size = Vector2(16, 12)
