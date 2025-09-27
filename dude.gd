@@ -30,8 +30,11 @@ func _process(delta: float) -> void:
 	move_and_slide()
 	
 	if disabled:
+		$CollisionShape2D.disabled = true
 		hide()
 		global_position = Info.playerPos
+	else:
+		$CollisionShape2D.disabled = false
 
 func sacrifice():
 	Info.posessing = true
