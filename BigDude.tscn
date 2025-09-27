@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://b0v06luymgval"]
+[gd_scene load_steps=7 format=3 uid="uid://b0v06luymgval"]
 
 [ext_resource type="Script" path="res://big_dude.gd" id="1_o40b0"]
 [ext_resource type="Texture2D" uid="uid://cs2dptfnrsdju" path="res://Sprites2/BigDude.png" id="2_vstnn"]
 [ext_resource type="AudioStream" uid="uid://cjq7ygb3jtxat" path="res://DeathScream.mp3" id="3_y7w6p"]
+[ext_resource type="PackedScene" uid="uid://djhym21qlqfmk" path="res://dig_fixer.tscn" id="4_hxc3o"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sv8pr"]
 size = Vector2(6, 5)
@@ -39,6 +40,8 @@ shape = SubResource("RectangleShape2D_0i8vh")
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("3_y7w6p")
 pitch_scale = 1.1
+
+[node name="DigFixer" parent="." instance=ExtResource("4_hxc3o")]
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

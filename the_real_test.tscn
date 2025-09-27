@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://c2hqt37cc2dhq"]
+[gd_scene load_steps=9 format=3 uid="uid://c2hqt37cc2dhq"]
 
 [ext_resource type="PackedScene" uid="uid://djsrk8tongu5y" path="res://stone_map.tscn" id="1_lqera"]
 [ext_resource type="PackedScene" uid="uid://cw3d3ae4gtj0j" path="res://player.tscn" id="2_aaam8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://bf6svam4es1k7" path="res://camera_anchor.tscn" id="5_r5qvl"]
 [ext_resource type="PackedScene" uid="uid://cxnwwxym0d75l" path="res://camera_2d.tscn" id="6_26033"]
 [ext_resource type="PackedScene" uid="uid://b0v06luymgval" path="res://BigDude.tscn" id="6_eieig"]
+[ext_resource type="PackedScene" uid="uid://d3quoryjkdxrp" path="res://mover.tscn" id="8_k0vah"]
 
 [node name="TheRealTest" type="Node2D"]
 
@@ -14,7 +15,7 @@
 layer_0/tile_data = PackedInt32Array(983040, 65536, 0, 1048576, 65536, 1, 983041, 65536, 0, 1048577, 65536, 1, 983042, 65536, 0, 1048578, 65536, 1, 983043, 65536, 0, 1048579, 65536, 1, 983044, 65536, 0, 1048580, 65536, 1, 983045, 65536, 0, 1048581, 65536, 1, 983046, 65536, 0, 1048582, 65536, 1, 983047, 65536, 0, 1048583, 65536, 1, 983048, 65536, 0, 1048584, 65536, 1, 983049, 65536, 0, 1048585, 65536, 1, 983050, 65536, 0, 1048586, 65536, 1, 983051, 65536, 0, 1048587, 65536, 1, 983052, 65536, 0, 1048588, 65536, 1, 983053, 65536, 0, 1048589, 65536, 1, 983054, 65536, 0, 1048590, 65536, 1, 983055, 65536, 0, 1048591, 65536, 1, 983056, 65536, 0, 1048592, 65536, 1, 983057, 65536, 0, 1048593, 65536, 1, 983058, 65536, 0, 1048594, 65536, 1, 983059, 65536, 0, 1048595, 65536, 1, 983060, 65536, 0, 1048596, 65536, 1, 983061, 65536, 0, 1048597, 65536, 1, 983062, 65536, 0, 1048598, 65536, 1, 983063, 65536, 0, 1048599, 65536, 1, 983064, 65536, 0, 1048600, 65536, 1, 983065, 65536, 0, 1048601, 65536, 1, 1048575, 65536, 0, 1114111, 65536, 1, 1048574, 65536, 0, 1114110, 65536, 1, 1048573, 65536, 0, 1114109, 65536, 1, 1048572, 65536, 0, 1114108, 65536, 1, 1048571, 65536, 0, 1114107, 65536, 1, 1048570, 65536, 0, 1114106, 65536, 1, 1048569, 65536, 0, 1114105, 65536, 1, 1048568, 65536, 0, 1114104, 65536, 1, 1048567, 65536, 0, 1114103, 65536, 1, 1048566, 65536, 0, 1114102, 65536, 1, 1114137, 65536, 1, 1114136, 65536, 1, 1114135, 65536, 1, 1114134, 65536, 1, 1114133, 65536, 1, 1114132, 65536, 1, 1114131, 65536, 1, 1114130, 65536, 1, 1114129, 65536, 1, 1114128, 65536, 1, 1114127, 65536, 1, 1114126, 65536, 1, 1114125, 65536, 1, 1114124, 65536, 1, 1114123, 65536, 1, 1114122, 65536, 1, 1114121, 65536, 1, 1114120, 65536, 1, 1114119, 65536, 1, 1114118, 65536, 1, 1114117, 65536, 1, 1114116, 65536, 1, 1114115, 65536, 1, 1114114, 65536, 1, 1114113, 65536, 1, 1114112, 65536, 1, 1179647, 65536, 1, 1179646, 65536, 1, 1179645, 65536, 1, 1179644, 65536, 1, 1179643, 65536, 1, 1179642, 65536, 1, 1179641, 65536, 1, 1179640, 65536, 1, 1179639, 65536, 1, 1179638, 65536, 1)
 
 [node name="Player" parent="." instance=ExtResource("2_aaam8")]
-position = Vector2(33, 0)
+position = Vector2(-7, 2)
 
 [node name="Spikes" parent="." instance=ExtResource("4_ialeo")]
 layer_0/tile_data = PackedInt32Array(917529, 0, 0, 917528, 0, 0, 917527, 0, 0, 917526, 0, 0)
@@ -35,9 +36,17 @@ position = Vector2(89, -7)
 [node name="Dude" parent="." instance=ExtResource("3_71no4")]
 position = Vector2(67, -7)
 
+[node name="Mover" parent="." instance=ExtResource("8_k0vah")]
+position = Vector2(14, 95)
+
+[node name="AnimationPlayer" parent="Mover" index="1"]
+autoplay = "new_animation"
+
 [connection signal="drop" from="Player" to="BigDude" method="_on_player_drop"]
 [connection signal="drop" from="Player" to="Dude" method="_on_player_drop"]
 [connection signal="reset" from="Player" to="BigDude" method="_on_player_reset"]
 [connection signal="reset" from="Player" to="Dude" method="_on_player_reset"]
 [connection signal="save" from="Player" to="BigDude" method="_on_player_save"]
 [connection signal="save" from="Player" to="Dude" method="_on_player_save"]
+
+[editable path="Mover"]
