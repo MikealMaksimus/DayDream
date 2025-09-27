@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://c4dursr8bl4tc"]
+[gd_scene load_steps=4 format=3 uid="uid://bjbq5jw0vb7u0"]
 
 [ext_resource type="Texture2D" uid="uid://7gosk864kxkt" path="res://Sprites2/DirtTile.png" id="1_ivoeh"]
 
@@ -8,7 +8,7 @@ texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
 0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, -4, 3, 1.5, 3, 1.5, -4)
 2:0/0 = 0
 2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
 4:0/0 = 0
@@ -70,7 +70,8 @@ texture_region_size = Vector2i(8, 8)
 
 [sub_resource type="TileSet" id="TileSet_he4b3"]
 tile_size = Vector2i(8, 8)
-physics_layer_0/collision_layer = 1
+physics_layer_0/collision_layer = 5
+physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_ojhlu")
 
 [node name="DirtMap" type="TileMap"]
