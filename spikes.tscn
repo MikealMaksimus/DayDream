@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://lh1f3upn0so3"]
+[gd_scene load_steps=4 format=3 uid="uid://1wxcii3y3ppe"]
 
 [ext_resource type="Texture2D" uid="uid://cc7n0g1120aqb" path="res://Sprites2/Spikes.png" id="1_i2jae"]
 
@@ -6,13 +6,13 @@
 texture = ExtResource("1_i2jae")
 texture_region_size = Vector2i(8, 8)
 0:0/0 = 0
-0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 4, 3, -0.5, -4, -0.5, -4, 4)
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, 4, 3, -1.5, -4, -1.5, -4, 4)
 1:0/0 = 0
-1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-0.5, -3, -0.5, 4, 4, 4, 4, -3)
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-2, -3, -2, 4, 4, 4, 4, -3)
 0:1/0 = 0
-0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -4, 3, 0.5, -4, 0.5, -4, -4)
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(3, -4, 3, 2, -4, 2, -4, -4)
 1:1/0 = 0
-1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, -4, 3, 0.5, 3, 0.5, -4)
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-4, -4, -4, 3, 2, 3, 2, -4)
 
 [sub_resource type="TileSet" id="TileSet_m11ni"]
 tile_size = Vector2i(8, 8)
