@@ -134,4 +134,6 @@ collision_mask = 2
 position = Vector2(0, 1.5)
 shape = SubResource("RectangleShape2D_snvf8")
 
+[node name="AnimationPlayer2" type="AnimationPlayer" parent="."]
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
