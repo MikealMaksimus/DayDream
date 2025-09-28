@@ -73,6 +73,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		$AudioStreamPlayer.play()
 
 func reset():
+	velocity = Vector2(0, 0)
 	$Dude.frame = 0
 	collision_layer &= ~(1 << 0)
 	global_position = resetPos
