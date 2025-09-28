@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dq80e5bs622sn"]
+
+[ext_resource type="Script" path="res://music_player.gd" id="1_l0oyr"]
+[ext_resource type="AudioStream" uid="uid://dr30jhjxt6wst" path="res://cinderblockmove-91891.mp3" id="2_p8o3q"]
+
+[node name="MusicPlayer" type="Node2D"]
+script = ExtResource("1_l0oyr")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_p8o3q")
