@@ -74,6 +74,7 @@ func reset():
 	global_position = resetPos
 	show()
 	dead = false
+	$Aliver.start()
 
 func _on_player_reset() -> void:
 	if not disableOnReset:
@@ -96,3 +97,7 @@ func _on_player_save() -> void:
 		disableOnReset = true
 	else:
 		disableOnReset = false
+
+
+func _on_aliver_timeout() -> void:
+	dead = false

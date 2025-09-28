@@ -43,6 +43,11 @@ pitch_scale = 1.1
 
 [node name="DigFixer" parent="." instance=ExtResource("4_hxc3o")]
 
+[node name="Aliver" type="Timer" parent="."]
+wait_time = 0.25
+one_shot = true
+
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]
 [connection signal="body_entered" from="HitBox" to="." method="_on_hit_box_body_entered"]
+[connection signal="timeout" from="Aliver" to="." method="_on_aliver_timeout"]
