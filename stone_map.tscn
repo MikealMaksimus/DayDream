@@ -71,6 +71,6 @@ physics_layer_0/collision_layer = 5
 physics_layer_0/collision_mask = 5
 sources/0 = SubResource("TileSetAtlasSource_pmle7")
 
-[node name="StoneMap" type="TileMap"]
+[node name="StoneMap" type="TileMap" groups=["Tile"]]
 tile_set = SubResource("TileSet_a1a2q")
 format = 2

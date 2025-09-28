@@ -26,6 +26,9 @@ var platform_velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
 	
+	if Input.is_action_just_pressed("reset"):
+		restart()
+	
 	if Info.posessed == preload("res://BigDude.tscn"):
 		$Center/Sprite2D.texture = load("res://Sprites2/PlayerBig.png")
 	else:
@@ -123,13 +126,15 @@ func animation():
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("Deadly"):
+		restart()
+
+func restart():
 		$ColorRect/AnimationPlayer.play("Fade")
 		global_position = Info.chekPoint
 		emit_signal("reset")
 		Info.hop = Info.hopSave
 		Info.posessed = Info.posessedSave
 		Info.posessing = Info.posessingSave
-
 
 func _on_cooldown_timeout() -> void:
 	cool = false
