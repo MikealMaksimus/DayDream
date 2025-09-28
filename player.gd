@@ -138,3 +138,7 @@ func restart():
 
 func _on_cooldown_timeout() -> void:
 	cool = false
+
+
+func _on_music_changer_dark() -> void:
+	$PointLight2D.enabled = true

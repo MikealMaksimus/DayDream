@@ -4,7 +4,7 @@ var tracker = 1
 
 var over = load("res://overworld.mp3")
 var cave = load("res://Spelunking.mp3")
-var hell = load("res://cinderblockmove-91891.mp3")
+var hell = load("res://Sprites2/gloom. the sole entity they dread art thou.mp3")
 
 func _ready() -> void:
 	$AudioStreamPlayer.play()
