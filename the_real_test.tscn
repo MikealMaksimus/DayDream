@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://c2hqt37cc2dhq"]
+[gd_scene load_steps=8 format=3 uid="uid://c2hqt37cc2dhq"]
 
 [ext_resource type="PackedScene" uid="uid://djsrk8tongu5y" path="res://stone_map.tscn" id="1_lqera"]
 [ext_resource type="PackedScene" uid="uid://cw3d3ae4gtj0j" path="res://player.tscn" id="2_aaam8"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://bf6svam4es1k7" path="res://camera_anchor.tscn" id="5_r5qvl"]
 [ext_resource type="PackedScene" uid="uid://cxnwwxym0d75l" path="res://camera_2d.tscn" id="6_26033"]
 [ext_resource type="PackedScene" uid="uid://b0v06luymgval" path="res://BigDude.tscn" id="6_eieig"]
-[ext_resource type="PackedScene" uid="uid://d3quoryjkdxrp" path="res://mover.tscn" id="8_k0vah"]
 
 [node name="TheRealTest" type="Node2D"]
 
@@ -36,17 +35,9 @@ position = Vector2(89, -7)
 [node name="Dude" parent="." instance=ExtResource("3_71no4")]
 position = Vector2(67, -7)
 
-[node name="Mover" parent="." instance=ExtResource("8_k0vah")]
-position = Vector2(14, 95)
-
-[node name="AnimationPlayer" parent="Mover" index="1"]
-autoplay = "new_animation"
-
 [connection signal="drop" from="Player" to="BigDude" method="_on_player_drop"]
 [connection signal="drop" from="Player" to="Dude" method="_on_player_drop"]
 [connection signal="reset" from="Player" to="BigDude" method="_on_player_reset"]
 [connection signal="reset" from="Player" to="Dude" method="_on_player_reset"]
 [connection signal="save" from="Player" to="BigDude" method="_on_player_save"]
 [connection signal="save" from="Player" to="Dude" method="_on_player_save"]
-
-[editable path="Mover"]
