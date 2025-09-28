@@ -79,6 +79,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 
 func reset():
 	global_position = resetPos
+	velocity = Vector2(0, 0)
 	show()
 
 func _on_player_reset() -> void:
