@@ -18,6 +18,7 @@ collision_mask = 4
 script = ExtResource("1_o40b0")
 
 [node name="Dude" type="Sprite2D" parent="."]
+position = Vector2(0, -2)
 texture = ExtResource("2_vstnn")
 hframes = 2
 

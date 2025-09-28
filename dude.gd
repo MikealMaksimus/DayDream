@@ -15,9 +15,13 @@ var disableOnReset = false
 
 var dead = false
 
+@export var evil : bool
+
 func _ready() -> void:
 	resetPos = global_position
 	velocity = Vector2(0, 0)
+	if evil:
+		$Dude.texture = load("res://Sprites2/Devil.png")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
