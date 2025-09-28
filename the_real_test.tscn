@@ -31,9 +31,11 @@ position_smoothing_speed = 7.0
 
 [node name="BigDude" parent="." instance=ExtResource("6_eieig")]
 position = Vector2(89, -7)
+evil = true
 
 [node name="Dude" parent="." instance=ExtResource("3_71no4")]
 position = Vector2(67, -7)
+evil = true
 
 [connection signal="drop" from="Player" to="BigDude" method="_on_player_drop"]
 [connection signal="drop" from="Player" to="Dude" method="_on_player_drop"]
