@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cw3cgeewsydg4" path="res://Sprites2/Moving.png" id="1_jna33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijk27"]
-size = Vector2(16, 8)
+size = Vector2(24, 8)
 
 [sub_resource type="Animation" id="Animation_llk5n"]
 length = 0.001

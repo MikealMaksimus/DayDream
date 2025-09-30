@@ -9,6 +9,8 @@ var acc = 40
 var dec = 60
 var jump = 305
 
+var dead = false
+
 var cool = false
 
 var gravity = 1400
@@ -41,8 +43,9 @@ func _physics_process(delta: float) -> void:
 	elif not is_on_floor():
 		velocity.y +=  gravity * delta
 	
-	walking()
-	jumping()
+	if not dead:
+		walking()
+		jumping()
 	
 	if Info.posessing and Input.is_action_just_pressed("Posess") and canDrop:
 		#var drop = load("res://dude.tscn").instantiate()
@@ -129,12 +132,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		restart()
 
 func restart():
+		Info.key = false
+		dead = true
+		$Dead.start()
 		$ColorRect/AnimationPlayer.play("Fade")
-		global_position = Info.chekPoint
-		emit_signal("reset")
 		Info.hop = Info.hopSave
 		Info.posessed = Info.posessedSave
 		Info.posessing = Info.posessingSave
+		global_position = Info.chekPoint
+		global_position.y
+		emit_signal("reset")
+
 
 func _on_cooldown_timeout() -> void:
 	cool = false
@@ -142,3 +150,7 @@ func _on_cooldown_timeout() -> void:
 
 func _on_music_changer_dark() -> void:
 	$PointLight2D.enabled = true
+
+
+func _on_timer_timeout() -> void:
+	dead = false

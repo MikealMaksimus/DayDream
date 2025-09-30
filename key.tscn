@@ -1,8 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://cgqlyok3f1h1k"]
+[gd_scene load_steps=9 format=3 uid="uid://cgqlyok3f1h1k"]
 
 [ext_resource type="Script" path="res://key.gd" id="1_lkb53"]
 [ext_resource type="Texture2D" uid="uid://c5g7qbbb6ebg5" path="res://Sprites2/Key.png" id="1_s6skt"]
 [ext_resource type="AudioStream" uid="uid://bebl2fsr7h7cv" path="res://key-get-39925Better.mp3" id="3_o3j2u"]
+[ext_resource type="Texture2D" uid="uid://d22q6rcw0p74u" path="res://light.png" id="4_3jbaf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_wnsmj"]
 size = Vector2(19, 8)
@@ -66,5 +67,10 @@ libraries = {
 "": SubResource("AnimationLibrary_ak6jn")
 }
 autoplay = "Wobble"
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+energy = 0.3
+texture = ExtResource("4_3jbaf")
+texture_scale = 0.1
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

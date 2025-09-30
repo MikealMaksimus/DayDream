@@ -91,6 +91,7 @@ func _on_player_reset() -> void:
 
 
 func _on_player_drop() -> void:
+	velocity = Vector2(0, 175)
 	posessed = false
 	disabled = false
 	show()

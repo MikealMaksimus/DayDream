@@ -13,3 +13,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 func _on_player_reset() -> void:
 	picked = false
 	show()
+
+
+func _on_door_open() -> void:
+	queue_free()

@@ -14,5 +14,8 @@ var posessed
 var hopSave = false
 var posessingSave = false
 var posessedSave
+var doNotReset
 
 var track = 1
+
+var onCamera = false

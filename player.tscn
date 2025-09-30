@@ -414,5 +414,10 @@ enabled = false
 texture = ExtResource("3_k7yrg")
 texture_scale = 0.1
 
+[node name="Dead" type="Timer" parent="."]
+wait_time = 0.2
+one_shot = true
+
 [connection signal="timeout" from="Cooldown" to="." method="_on_cooldown_timeout"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="timeout" from="Dead" to="." method="_on_timer_timeout"]

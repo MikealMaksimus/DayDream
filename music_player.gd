@@ -2,9 +2,9 @@ extends Node2D
 
 var tracker = 1
 
-var over = load("res://overworld.mp3")
-var cave = load("res://Spelunking.mp3")
-var hell = load("res://Sprites2/gloom. the sole entity they dread art thou.mp3")
+var over = load("res://null(1).mp3")
+var cave = load("res://null.mp3")
+var hell = load("res://gloom. the sole entity they dread art thou(1).mp3")
 
 func _ready() -> void:
 	$AudioStreamPlayer.play()

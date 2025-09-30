@@ -41,7 +41,7 @@ func _physics_process(delta: float) -> void:
 		$CollisionShape2D.disabled = true
 		hide()
 		global_position = Info.playerPos
-		global_position.y -= 1
+		global_position.y -= 2
 	else:
 		$CollisionShape2D.disabled = false
 
@@ -78,15 +78,15 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		disabled = true
 
 func reset():
-	global_position = resetPos
-	velocity = Vector2(0, 0)
-	show()
+		disabled = false
+		global_position = resetPos
+		velocity = Vector2(0, 0)
+		show()
 
 func _on_player_reset() -> void:
 	dead = false
 	if not disableOnReset:
 		reset()
-		disabled = false
 	else:
 		disabled = true
 
@@ -94,6 +94,7 @@ func _on_player_reset() -> void:
 
 func _on_player_drop() -> void:
 	if not dead:
+		velocity = Vector2(0, 150)
 		posessed = false
 		disabled = false
 		show()
