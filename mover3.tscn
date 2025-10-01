@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://ctbe8us7cy13y"]
+[gd_scene load_steps=7 format=3 uid="uid://ctbe8us7cy13y"]
 
+[ext_resource type="Script" path="res://mover.gd" id="1_7gvel"]
 [ext_resource type="Texture2D" uid="uid://cw3cgeewsydg4" path="res://Sprites2/Moving.png" id="1_fa626"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijk27"]
@@ -44,6 +45,7 @@ _data = {
 }
 
 [node name="Mover" type="Node2D"]
+script = ExtResource("1_7gvel")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 collision_layer = 5

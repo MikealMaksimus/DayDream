@@ -132,6 +132,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		restart()
 
 func restart():
+		velocity = Vector2(0, 0)
 		Info.key = false
 		dead = true
 		$Dead.start()

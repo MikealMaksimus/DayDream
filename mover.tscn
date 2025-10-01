@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3quoryjkdxrp"]
+[gd_scene load_steps=7 format=3 uid="uid://d3quoryjkdxrp"]
 
+[ext_resource type="Script" path="res://mover.gd" id="1_2oo24"]
 [ext_resource type="Texture2D" uid="uid://cw3cgeewsydg4" path="res://Sprites2/Moving.png" id="1_jna33"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ijk27"]
@@ -31,7 +32,7 @@ tracks/0/path = NodePath("AnimatableBody2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 2),
+"times": PackedFloat32Array(0.5, 2.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(0, 0), Vector2(72, 0)]
@@ -44,6 +45,7 @@ _data = {
 }
 
 [node name="Mover" type="Node2D"]
+script = ExtResource("1_2oo24")
 
 [node name="AnimatableBody2D" type="AnimatableBody2D" parent="."]
 collision_layer = 5
