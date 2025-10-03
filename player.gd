@@ -143,7 +143,7 @@ func animation():
 		$AnimationPlayer.play("Idle")
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("Deadly"):
+	if body.is_in_group("Deadly") and not body.name == "Spikes2":
 		restart()
 
 func restart():

@@ -28,6 +28,10 @@ func _physics_process(delta: float) -> void:
 		set_collision_layer_value(3, true)
 		collision_layer |= 1 << 0
 		$Dude.frame = 1
+	else:
+		$Dude.frame = 0
+		set_collision_layer_value(3, false)
+		collision_layer &= ~(1 << 0)
 	
 	
 	if not is_on_floor():
@@ -75,15 +79,12 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 
 func reset():
 	velocity = Vector2(0, 0)
-	$Dude.frame = 0
-	set_collision_layer_value(3, false)
-	collision_layer &= ~(1 << 0)
 	global_position = resetPos
 	show()
-	dead = false
 	$Aliver.start()
 
 func _on_player_reset() -> void:
+	dead = false
 	if not disableOnReset:
 		reset()
 		disabled = false
