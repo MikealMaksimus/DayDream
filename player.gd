@@ -20,6 +20,10 @@ var was_on_floor
 
 var posessedReset
 
+var land = preload("res://land2-43790.mp3")
+
+var audio = preload("res://audio_player.tscn")
+
 signal reset
 signal drop
 signal save
@@ -27,6 +31,9 @@ signal save
 var platform_velocity: Vector2 = Vector2.ZERO
 
 func _physics_process(delta: float) -> void:
+	
+	$Center/Sprite2D.scale.x = move_toward($Center/Sprite2D.scale.x, 1, 0.7 * delta)
+	$Center/Sprite2D.scale.y = move_toward($Center/Sprite2D.scale.y, 1, 0.7 * delta)
 	
 	if Input.is_action_just_pressed("reset"):
 		restart()
@@ -70,6 +77,7 @@ func _physics_process(delta: float) -> void:
 func jumping():
 		if Input.is_action_just_pressed("jump") and is_on_floor() or Input.is_action_just_pressed("jump") and not $Coyote.is_stopped() or Input.is_action_pressed("jump") and is_on_floor() and not $JBuffer.is_stopped():
 			#$noSoundCut.play(jumpSound, 1, 0)
+			$Center/Sprite2D.scale = Vector2(0.8, 1.2)
 			if Info.hop:
 				if Info.posessed == preload("res://BigDude.tscn"):
 					velocity.y = -jump / 1.2
@@ -85,8 +93,15 @@ func jumping():
 			$JBuffer.start()
 		
 		
-		#if is_on_floor() and not was_on_floor: #Osu maahan
-			#$noSoundCut.play(laskuSound, 1, 0)
+		if is_on_floor() and not was_on_floor: #Osu maahan
+			if Info.posessing:
+				$Center/Sprite2D.scale = Vector2(1.1, 0.9)
+			else:
+				$Center/Sprite2D.scale = Vector2(1.2, 0.8)
+			#var a = audio.instantiate()
+			#a.sound = land
+			#get_parent().add_child(a)
+			
 			
 		
 		if was_on_floor != is_on_floor(): #Poistut maalta
@@ -132,6 +147,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 		restart()
 
 func restart():
+		Info.deaths += 1
 		velocity = Vector2(0, 0)
 		Info.key = false
 		dead = true
@@ -155,3 +171,7 @@ func _on_music_changer_dark() -> void:
 
 func _on_timer_timeout() -> void:
 	dead = false
+
+
+func _on_clock_timeout() -> void:
+	Info.time += 1

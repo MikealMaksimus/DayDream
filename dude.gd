@@ -70,10 +70,10 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		var p = blood.instantiate()
 		p.position = global_position
 		get_parent().add_child(p)
-		
-		var a = audio.instantiate()
-		a.sound = blow
-		get_parent().add_child(a)
+		if not name == "Dude10":
+			var a = audio.instantiate()
+			a.sound = blow
+			get_parent().add_child(a)
 		dead = true
 		disabled = true
 

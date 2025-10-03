@@ -19,3 +19,6 @@ var doNotReset
 var track = 1
 
 var onCamera = false
+
+var time = 0
+var deaths = 0

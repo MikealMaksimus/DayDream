@@ -25,6 +25,7 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
 	if dead:
+		set_collision_layer_value(3, true)
 		collision_layer |= 1 << 0
 		$Dude.frame = 1
 	
@@ -75,6 +76,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 func reset():
 	velocity = Vector2(0, 0)
 	$Dude.frame = 0
+	set_collision_layer_value(3, false)
 	collision_layer &= ~(1 << 0)
 	global_position = resetPos
 	show()
