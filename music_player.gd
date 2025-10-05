@@ -7,9 +7,6 @@ var over = load("res://null(1).mp3")
 var cave = load("res://null.mp3")
 var hell = load("res://gloom. the sole entity they dread art thou(1).mp3")
 
-func _ready() -> void:
-	$AudioStreamPlayer.play()
-
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("mute"):
 		if mute:

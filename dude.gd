@@ -78,6 +78,7 @@ func _on_hit_box_body_entered(body: Node2D) -> void:
 		disabled = true
 
 func reset():
+		posessed = false
 		disabled = false
 		global_position = resetPos
 		velocity = Vector2(0, 0)

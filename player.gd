@@ -30,6 +30,9 @@ signal save
 
 var platform_velocity: Vector2 = Vector2.ZERO
 
+func _ready() -> void:
+	$Center.scale.x = -1
+
 func _physics_process(delta: float) -> void:
 	
 	$Center/Sprite2D.scale.x = move_toward($Center/Sprite2D.scale.x, 1, 0.7 * delta)
