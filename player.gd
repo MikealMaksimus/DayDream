@@ -7,7 +7,8 @@ var canDrop = false
 var speed = 140
 var acc = 40
 var dec = 60
-var jump = 305
+var jump = 310
+var jumpOff = 305
 
 var dead = false
 
@@ -67,7 +68,7 @@ func _physics_process(delta: float) -> void:
 		Info.hop = false
 		Info.posessing = false
 		Info.posessed = null
-		velocity.y = -jump
+		velocity.y = -jumpOff
 		$Cooldown.start()
 		cool = true
 	
